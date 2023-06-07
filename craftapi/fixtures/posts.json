@@ -1,0 +1,57 @@
+[
+    {
+        "pk": 1,
+        "model": "craftapi.post", 
+        "fields": { 
+            "post": "Check out my latest craft creation!",
+            "tags": [1, 2],
+            "user": 1,
+            "date": "2023-06-01",
+            "project": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "craftapi.post", 
+        "fields": { 
+            "post": "Crafting inspiration for the weekend.",
+            "tags": [2, 3],
+            "user": 2,
+            "date": "2023-06-02",
+            "project": 2
+        }
+    },
+    {
+        "pk": 3,
+        "model": "craftapi.post", 
+        "fields": { 
+            "post": "I'm starting a new craft project.",
+            "tags": [1, 4],
+            "user": 3,
+            "date": "2023-06-03",
+            "project": 3
+        }
+    },
+    {
+        "pk": 4,
+        "model": "craftapi.post", 
+        "fields": { 
+            "post": "Crafting tips and tricks.",
+            "tags": [3, 5],
+            "user": 4,
+            "date": "2023-06-04",
+            "project": 4
+        }
+    },
+    {
+        "pk": 5,
+        "model": "craftapi.post", 
+        "fields": { 
+            "post": "Crafting with recycled materials.",
+            "tags": [1, 4],
+            "user": 5,
+            "date": "2023-06-05",
+            "project": 5
+        }
+    }
+]

@@ -1,0 +1,47 @@
+[
+    {
+        "pk": 1,
+        "model": "craftapi.note", 
+        "fields": { 
+            "note": "Remember to buy more supplies.",
+            "date": "2023-06-01",
+            "project": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "craftapi.note", 
+        "fields": { 
+            "note": "Try a different stitching technique.",
+            "date": "2023-06-02",
+            "project": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "craftapi.note", 
+        "fields": { 
+            "note": "Experiment with different paper types.",
+            "date": "2023-06-03",
+            "project": 2
+        }
+    },
+    {
+        "pk": 4,
+        "model": "craftapi.note", 
+        "fields": { 
+            "note": "Practice intricate folds.",
+            "date": "2023-06-04",
+            "project": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "craftapi.note", 
+        "fields": {
+            "note": "Learn new knitting stitches.",
+            "date": "2023-06-05",
+            "project": 3
+        }
+    }
+]

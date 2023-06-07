@@ -1,0 +1,77 @@
+[
+    {
+        "pk": 1,
+        "model": "craftapi.user", 
+        "fields": {
+            "password": "password1",
+            "username": "anna",
+            "last_name": "m",
+            "first_name": "anna",
+            "email": "anna@m.com",
+            "is_staff": true,
+            "is_active": true,
+            "bio": "I love to crochet",
+            "profile_pic": "https://example.com/profile_pic1.jpg"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "craftapi.user", 
+        "fields": {
+            "password": "password2",
+            "username": "user2",
+            "last_name": "Smith",
+            "first_name": "Jane",
+            "email": "jane.smith@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "bio": "Crafting is my passion.",
+            "profile_pic": "https://example.com/profile_pic2.jpg"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "craftapi.user", 
+        "fields": {
+            "password": "password3",
+            "username": "user3",
+            "last_name": "Johnson",
+            "first_name": "Michael",
+            "email": "michael.johnson@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "bio": "Love creating beautiful crafts.",
+            "profile_pic": "https://example.com/profile_pic3.jpg"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "craftapi.user", 
+        "fields": {
+            "password": "password4",
+            "username": "user4",
+            "last_name": "Williams",
+            "first_name": "Emily",
+            "email": "emily.williams@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "bio": "Crafting brings me joy.",
+            "profile_pic": "https://example.com/profile_pic4.jpg"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "craftapi.user", 
+        "fields": {
+            "password": "password5",
+            "username": "user5",
+            "last_name": "Brown",
+            "first_name": "Daniel",
+            "email": "daniel.brown@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "bio": "Exploring various craft techniques.",
+            "profile_pic": "https://example.com/profile_pic5.jpg"
+        }
+    }
+]

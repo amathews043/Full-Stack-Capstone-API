@@ -1,0 +1,70 @@
+[
+    {
+        "pk": 1,
+        "model": "craftapi.project", 
+        "fields": { 
+            "name": "Paper Quilling",
+            "user": 1,
+            "patternURL": "https://example.com/pattern1.jpg",
+            "hidden": false,
+            "description": "Learn the art of paper quilling."
+        }
+    },
+    {
+        "pk": 2,
+        "model": "craftapi.project", 
+        "fields": { 
+            "name": "Embroidery",
+            "user": 2,
+            "patternURL": "https://example.com/pattern2.jpg",
+            "hidden": false,
+            "description": "Discover the beauty of embroidery."
+        }
+
+    },
+    {
+        "pk": 3,
+        "model": "craftapi.project", 
+        "fields": { 
+            "name": "Origami",
+            "user": 3,
+            "patternURL": "https://example.com/pattern3.jpg",
+            "hidden": false,
+            "description": "Create beautiful paper folds."
+        }
+    },
+    {
+        "pk": 4,
+        "model": "craftapi.project", 
+        "fields": { 
+            "name": "Knitting",
+            "user": 4,
+            "patternURL": "https://example.com/pattern4.jpg",
+            "hidden": false,
+            "description": "Knit cozy accessories."
+        }
+    },
+    {
+        "pk": 5,
+        "model": "craftapi.project", 
+        "fields": { 
+            "name": "Recycled Crafts",
+            "user": 5,
+            "patternURL": "https://example.com/pattern5.jpg",
+            "hidden": false,
+            "description": "Turn trash into treasure."
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "craftapi.project", 
+        "fields": { 
+            "name": "Beach Blanket", 
+            "user": 1, 
+            "patternURL": "", 
+            "hidden": true, 
+            "description": "making this as a christmas gift for mom"
+        }
+
+    }
+]

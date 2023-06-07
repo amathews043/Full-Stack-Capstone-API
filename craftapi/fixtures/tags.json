@@ -1,0 +1,79 @@
+[
+    {
+        "pk": 1,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Paper Crafts"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Embroidery"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Crafting Inspiration"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Recycled Materials"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Knitting"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Origami"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Crafting Tips"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "DIY Projects"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Sewing"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Painting"
+        }
+    }, 
+    {
+        "pk": 11,
+        "model": "craftapi.tag", 
+        "fields": {
+            "tag": "Crochet"
+        }
+    }
+]
