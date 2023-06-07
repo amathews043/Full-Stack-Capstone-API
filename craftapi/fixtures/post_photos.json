@@ -1,0 +1,18 @@
+[
+    {
+        "pk": 1, 
+        "model": "craftapi.postphoto", 
+        "fields": { 
+            "image_url": "https://res.cloudinary.com/duy4yg4hz/image/upload/v1684721375/svacrnzvacme6ix46u0w.jpg", 
+            "post": 5
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "craftapi.postphoto", 
+        "fields": { 
+            "image_url": "https://res.cloudinary.com/duy4yg4hz/image/upload/v1679682088/o1o4sqqmjpgo7rvsxzew.jpg", 
+            "post": 4
+        }
+    }
+]
