@@ -10,3 +10,7 @@ class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.now)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="project_posts")
+
+    @property 
+    def photo_url(self):
+        return f'{self.photo.photo_url}'
