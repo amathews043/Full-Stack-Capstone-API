@@ -2,7 +2,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 
-from models import Post
+from craftapi.models import Post
 
 class PostView(ViewSet):
     """Post View """
@@ -20,5 +20,5 @@ class PostView(ViewSet):
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta: 
-        model: Post
-        fields = ('id', 'post', 'date', 'project', 'user')
+        model = Post
+        fields = ('id', 'post', 'date', 'project', 'user', 'photo_url')
