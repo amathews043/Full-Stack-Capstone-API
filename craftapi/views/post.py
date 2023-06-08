@@ -33,8 +33,12 @@ class PostView(ViewSet):
         
     def destroy(self, request, pk):
         post = Post.objects.get(pk=pk)
-        post.delete()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+        user = User.objects.get(pk=request.auth.user.id)
+        if post.user_id == user.id:
+            post.delete()
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+        else: 
+            return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
 
     
 
