@@ -5,7 +5,7 @@
         "fields": { 
             "name": "Paper Quilling",
             "user": 1,
-            "patternURL": "https://example.com/pattern1.jpg",
+            "pattern_url": "https://example.com/pattern1.jpg",
             "hidden": false,
             "description": "Learn the art of paper quilling."
         }
@@ -16,7 +16,7 @@
         "fields": { 
             "name": "Embroidery",
             "user": 2,
-            "patternURL": "https://example.com/pattern2.jpg",
+            "pattern_url": "https://example.com/pattern2.jpg",
             "hidden": false,
             "description": "Discover the beauty of embroidery."
         }
@@ -28,7 +28,7 @@
         "fields": { 
             "name": "Origami",
             "user": 3,
-            "patternURL": "https://example.com/pattern3.jpg",
+            "pattern_url": "https://example.com/pattern3.jpg",
             "hidden": false,
             "description": "Create beautiful paper folds."
         }
@@ -39,7 +39,7 @@
         "fields": { 
             "name": "Knitting",
             "user": 4,
-            "patternURL": "https://example.com/pattern4.jpg",
+            "pattern_url": "https://example.com/pattern4.jpg",
             "hidden": false,
             "description": "Knit cozy accessories."
         }
@@ -50,7 +50,7 @@
         "fields": { 
             "name": "Recycled Crafts",
             "user": 5,
-            "patternURL": "https://example.com/pattern5.jpg",
+            "pattern_url": "https://example.com/pattern5.jpg",
             "hidden": false,
             "description": "Turn trash into treasure."
         }
@@ -61,7 +61,7 @@
         "fields": { 
             "name": "Beach Blanket", 
             "user": 1, 
-            "patternURL": "", 
+            "pattern_url": "", 
             "hidden": true, 
             "description": "making this as a christmas gift for mom"
         }
