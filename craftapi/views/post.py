@@ -8,9 +8,12 @@ class PostView(ViewSet):
     """Post View """
 
     def retrieve(self, request, pk):
-        post = Post.objects.get(pk=pk)
-        serializer = PostSerializer(post)
-        return Response(serializer.data)
+        try:
+            post = Post.objects.get(pk=pk)
+            serializer = PostSerializer(post)
+            return Response(serializer.data)
+        except Post.DoesNotExist as ex: 
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
     
     def list(self, request):
         posts = Post.objects.all()
@@ -27,6 +30,11 @@ class PostView(ViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else: 
             return Response({'message': 'This is not your project'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+    def destroy(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        post.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     
 
