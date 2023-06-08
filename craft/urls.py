@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
-from craftapi.views import register_user, login_user, PostView, ProjectView
+from craftapi.views import register_user, login_user, PostView, ProjectView, ProfileView
 from rest_framework import routers
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'posts', PostView, 'post')
 router.register(r'projects', ProjectView, 'project')
+router.register(r'profiles', ProfileView, 'profile')
 
 
 urlpatterns = [
