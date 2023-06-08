@@ -7,7 +7,8 @@
             "tags": [1, 2],
             "user": 1,
             "date": "2023-06-01",
-            "project": 1
+            "project": 1, 
+            "image": ""
         }
     },
     {
@@ -18,7 +19,8 @@
             "tags": [2, 3],
             "user": 2,
             "date": "2023-06-02",
-            "project": 2
+            "project": 2, 
+            "image": ""
         }
     },
     {
@@ -29,7 +31,8 @@
             "tags": [1, 4],
             "user": 3,
             "date": "2023-06-03",
-            "project": 3
+            "project": 3, 
+            "image": "https://res.cloudinary.com/duy4yg4hz/image/upload/v1679687702/ka3sdyj5lxf6gchf8wwj.jpg"
         }
     },
     {
@@ -40,7 +43,8 @@
             "tags": [3, 5],
             "user": 4,
             "date": "2023-06-04",
-            "project": 4
+            "project": 4, 
+            "image": "https://res.cloudinary.com/duy4yg4hz/image/upload/v1680617743/mx4dm87dpncxdt8qrz1t.jpg"
         }
     },
     {
@@ -51,7 +55,8 @@
             "tags": [1, 4],
             "user": 5,
             "date": "2023-06-05",
-            "project": 5
+            "project": 5,
+            "image": ""
         }
     }
 ]
