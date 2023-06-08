@@ -10,4 +10,12 @@ class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.now)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="project_posts")
+    image = models.URLField(blank=True)
+
+    @property
+    def project_name(self):
+        return f'{self.project.name}'
     
+    @property 
+    def creator_name(self):
+        return f'{self.user.username}'
