@@ -39,6 +39,25 @@ class PostView(ViewSet):
             return Response(None, status=status.HTTP_204_NO_CONTENT)
         else: 
             return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
+    
+    def update(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        user = User.objects.get(pk=request.auth.user.id)
+
+        if post.user_id == user.id:
+            post.post = request.data['post']
+            post.image = request.data['image']
+
+            project = Project.objects.get(pk=request.data['project'])
+            post.project = project
+
+            post.save()
+
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+        
+        else: 
+            return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
+
 
     
 
