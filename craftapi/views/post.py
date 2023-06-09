@@ -2,7 +2,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 
-from craftapi.models import Post, Project, User
+from craftapi.models import Post, Project, User, Tag
 
 class PostView(ViewSet):
     """Post View """
@@ -59,15 +59,19 @@ class PostView(ViewSet):
             return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-    
+class TagSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Tag
+        fields = ['id', 'tag']
 
 class PostSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=True, read_only=True)
     class Meta: 
         model = Post
-        fields = ('id', 'post', 'date', 'project', 'user', 'image', 'project_name', 'creator_name')
+        fields = ('id', 'post', 'date', 'project', 'user', 'image', 'project_name', 'creator_name', 'tags')
 
 class CreatePostSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Post
-        fields = ('id', 'post', 'image')
+        fields = ('id', 'post', 'image', 'tags')

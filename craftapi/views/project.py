@@ -2,7 +2,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 
-from craftapi.models import Project, User
+from craftapi.models import Project, User, Post
 
 class ProjectView(ViewSet):
 
@@ -58,14 +58,14 @@ class ProjectView(ViewSet):
 
 
 
-
-
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Project
-        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id')
+        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id', 'project_posts',)
+        depth = 1
 
 class CreateProjectSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Project
         fields = ('id', 'name', 'pattern_url', 'hidden', 'description')
+        
