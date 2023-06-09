@@ -57,11 +57,11 @@ class ProjectView(ViewSet):
             return Response({'message': 'This is not your project'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-
 class ProjectSerializer(serializers.ModelSerializer):
+    preview_image = serializers.ReadOnlyField()
     class Meta: 
         model = Project
-        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id', 'project_posts',)
+        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id', 'project_posts', 'preview_image')
         depth = 1
 
 class CreateProjectSerializer(serializers.ModelSerializer):
