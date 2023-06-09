@@ -18,6 +18,7 @@ class ProfileView(ViewSet):
 
         if user.id == int(pk): 
             user.username = request.data['username']
+            user.password = request.data['password']
             user.bio = request.data['bio']
             user.profile_pic = request.data['profile_pic']
             user.save()
