@@ -61,7 +61,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     preview_image = serializers.ReadOnlyField()
     class Meta: 
         model = Project
-        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id', 'project_posts', 'preview_image')
+        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id', 'project_posts', 'preview_image', 'inspirations')
         depth = 1
 
 class CreateProjectSerializer(serializers.ModelSerializer):
