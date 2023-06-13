@@ -6,6 +6,17 @@ from craftapi.models import Note, User, Project
 
 class NoteView(ViewSet):
 
+    def retrieve(self, request, pk):
+        note = Note.objects.get(pk=pk)
+        project = Project.objects.get(pk=note.project.id)
+        user = User.objects.get(pk=request.auth.user.id)
+
+        if user.id == project.user_id:
+            serializer=NoteSerializer(note)
+            return Response(serializer.data)
+        else: 
+            return Response({'message': "This is not your project. Notes can only be viewed by the project creator"}, status=status.HTTP_401_UNAUTHORIZED)
+
     def list(self, request):
         notes = Note.objects.all()
         user = User.objects.get(pk=request.auth.user.id)
