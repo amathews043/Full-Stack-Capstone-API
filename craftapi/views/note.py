@@ -55,7 +55,17 @@ class NoteView(ViewSet):
         else: 
             return Response({'message': 'This is not your project. You cannot edit notes on other crafters projects'}, status=status.HTTP_401_UNAUTHORIZED)
 
-            
+    def destroy(self, request, pk):
+        note=Note.objects.get(pk=pk)
+        project = Project.objects.get(pk=note.project.id)
+        user = User.objects.get(pk=request.auth.user.id)
+
+        if project.user_id == user.id: 
+            note.delete()
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response({'message': 'This is not your project. You cannot delete notes on other crafters projects'}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 
 
