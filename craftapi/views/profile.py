@@ -9,7 +9,7 @@ class ProfileView(ViewSet):
         try:
             profile = User.objects.get(pk=pk)
             serializer = ProfileSerializer(profile)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except User.DoesNotExist as ex: 
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         

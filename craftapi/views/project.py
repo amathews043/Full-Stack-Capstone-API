@@ -13,7 +13,7 @@ class ProjectView(ViewSet):
         if "my_projects" in request.query_params: 
             projects = projects.filter(user_id = user.id)
         serializer = ProjectSerializer(projects, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     def retrieve(self, request, pk):
         try:

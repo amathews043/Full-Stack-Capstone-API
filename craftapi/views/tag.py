@@ -10,7 +10,7 @@ class TagView(ViewSet):
     def list(self, request):
         tags = Tag.objects.all()
         serializer = TagSerializer(tags, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
 
 class TagSerializer(serializers.ModelSerializer):
