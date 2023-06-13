@@ -11,7 +11,7 @@ class PostView(ViewSet):
         try:
             post = Post.objects.get(pk=pk)
             serializer = PostSerializer(post)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Post.DoesNotExist as ex: 
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
     
@@ -23,7 +23,7 @@ class PostView(ViewSet):
             posts = posts.filter(project=project_id)
 
         serializer = PostSerializer(posts, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     def create(self, request):
         project = Project.objects.get(pk=request.data['project'])
