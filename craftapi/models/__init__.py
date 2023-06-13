@@ -3,4 +3,3 @@ from .project import Project
 from .note import Note 
 from .tag import Tag
 from .post import Post
-from .inspiration import Inspiration

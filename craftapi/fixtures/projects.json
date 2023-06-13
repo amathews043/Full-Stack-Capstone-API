@@ -7,7 +7,8 @@
             "user": 1,
             "pattern_url": "https://example.com/pattern1.jpg",
             "hidden": false,
-            "description": "Learn the art of paper quilling."
+            "description": "Learn the art of paper quilling.",
+            "inspirations": []
         }
     },
     {
@@ -18,7 +19,8 @@
             "user": 2,
             "pattern_url": "https://example.com/pattern2.jpg",
             "hidden": false,
-            "description": "Discover the beauty of embroidery."
+            "description": "Discover the beauty of embroidery.",
+            "inspirations": [1]
         }
 
     },
@@ -30,7 +32,8 @@
             "user": 3,
             "pattern_url": "https://example.com/pattern3.jpg",
             "hidden": false,
-            "description": "Create beautiful paper folds."
+            "description": "Create beautiful paper folds.", 
+            "inspirations": [3]
         }
     },
     {
@@ -41,7 +44,8 @@
             "user": 4,
             "pattern_url": "https://example.com/pattern4.jpg",
             "hidden": false,
-            "description": "Knit cozy accessories."
+            "description": "Knit cozy accessories.",
+            "inspirations": [3, 1]
         }
     },
     {
@@ -52,7 +56,8 @@
             "user": 5,
             "pattern_url": "https://example.com/pattern5.jpg",
             "hidden": false,
-            "description": "Turn trash into treasure."
+            "description": "Turn trash into treasure.", 
+            "inspirations": [3]
         }
     }, 
     {
@@ -63,7 +68,8 @@
             "user": 1, 
             "pattern_url": "", 
             "hidden": true, 
-            "description": "making this as a christmas gift for mom"
+            "description": "making this as a christmas gift for mom", 
+            "inspirations": [3, 5, 2]
         }
 
     }
