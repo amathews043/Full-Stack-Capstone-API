@@ -9,9 +9,13 @@ class Project(models.Model):
     pattern_url = models.URLField(blank=True)
     hidden = models.BooleanField()
     description = models.CharField(max_length=5000)
-    inspirations = models.ManyToManyField("self", through="Inspiration")
+    inspirations = models.ManyToManyField("self", symmetrical=False)
 
     @property
     def preview_image(self):
         return self.project_posts.filter(~Q(image = None)).latest('id').image
+    
+    @property
+    def creator_name(self): 
+        return f'{self.user.first_name} {self.user.last_name}'
 

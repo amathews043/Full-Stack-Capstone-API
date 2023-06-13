@@ -39,6 +39,7 @@ class ProjectView(ViewSet):
             project.hidden = request.data['hidden']
             project.pattern_url = request.data['pattern_url']
             project.description = request.data['description']
+            project.inspirations.set(request.data['inspirations'])
 
             project.save()
             return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -61,11 +62,12 @@ class ProjectSerializer(serializers.ModelSerializer):
     preview_image = serializers.ReadOnlyField()
     class Meta: 
         model = Project
-        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id', 'project_posts', 'preview_image', 'inspirations')
+        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'user_id', 'project_posts', 'preview_image', 'inspirations', 'creator_name')
         depth = 1
 
 class CreateProjectSerializer(serializers.ModelSerializer):
+
     class Meta: 
         model = Project
-        fields = ('id', 'name', 'pattern_url', 'hidden', 'description')
+        fields = ('id', 'name', 'pattern_url', 'hidden', 'description', 'inspirations')
         
