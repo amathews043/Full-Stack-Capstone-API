@@ -17,6 +17,11 @@ class PostView(ViewSet):
     
     def list(self, request):
         posts = Post.objects.all()
+
+        if "project_id" in request.query_params: 
+            project_id = int(request.query_params['project_id'])
+            posts = posts.filter(project=project_id)
+
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
     
