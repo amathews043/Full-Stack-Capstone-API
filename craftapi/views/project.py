@@ -47,7 +47,7 @@ class ProjectView(ViewSet):
         else: 
             return Response({'message': 'This is not your project'}, status=status.HTTP_401_UNAUTHORIZED)
     
-    def delete(self,request, pk): 
+    def destroy(self,request, pk): 
         project = Project.objects.get(pk=pk)
         user = User.objects.get(pk=request.auth.user.id)
 

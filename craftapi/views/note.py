@@ -29,7 +29,7 @@ class NoteView(ViewSet):
                 notes = notes.filter(project=project_id)
                 serializer = NoteSerializer(notes, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
-            else: return Response({'message': "This is not your project. Notes can only be viewed by the project creator"}, status=status.HTTP_401_UNAUTHORIZED)
+            else: return Response([], status=status.HTTP_404_NOT_FOUND)
 
     def create(self, request):
         project = Project.objects.get(pk=request.data['project'])

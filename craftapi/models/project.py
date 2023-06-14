@@ -13,7 +13,8 @@ class Project(models.Model):
 
     @property
     def preview_image(self):
-        return self.project_posts.filter(~Q(image = None)).latest('id').image
+        return self.project_posts.filter(~Q(image = "")).latest('id').image
+
     
     @property
     def creator_name(self): 
