@@ -11,7 +11,7 @@
             "is_staff": true,
             "is_active": true,
             "bio": "I love to crochet",
-            "profile_pic": "https://example.com/profile_pic1.jpg"
+            "profile_pic": "https://res.cloudinary.com/duy4yg4hz/image/upload/v1686843480/IMG_3992_1_ickdbu.jpg"
         }
     },
     {
@@ -26,7 +26,7 @@
             "is_staff": false,
             "is_active": true,
             "bio": "Crafting is my passion.",
-            "profile_pic": "https://example.com/profile_pic2.jpg"
+            "profile_pic": ""
         }
     },
     {
@@ -41,7 +41,7 @@
             "is_staff": false,
             "is_active": true,
             "bio": "Love creating beautiful crafts.",
-            "profile_pic": "https://example.com/profile_pic3.jpg"
+            "profile_pic": ""
         }
     },
     {
@@ -56,7 +56,7 @@
             "is_staff": false,
             "is_active": true,
             "bio": "Crafting brings me joy.",
-            "profile_pic": "https://example.com/profile_pic4.jpg"
+            "profile_pic": ""
         }
     },
     {
@@ -71,7 +71,7 @@
             "is_staff": false,
             "is_active": true,
             "bio": "Exploring various craft techniques.",
-            "profile_pic": "https://example.com/profile_pic5.jpg"
+            "profile_pic": ""
         }
     }
 ]

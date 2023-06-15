@@ -21,6 +21,10 @@ class PostView(ViewSet):
         if "project_id" in request.query_params: 
             project_id = int(request.query_params['project_id'])
             posts = posts.filter(project=project_id)
+        
+        if "user_id" in request.query_params:
+            user_id = int(request.query_params['user_id'])
+            posts = posts.filter(user=user_id)
 
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
