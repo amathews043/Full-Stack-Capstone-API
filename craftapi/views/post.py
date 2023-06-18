@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from rest_framework.decorators import action
 
 from craftapi.models import Post, Project, User, Tag
 
@@ -66,6 +67,12 @@ class PostView(ViewSet):
         
         else: 
             return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+    @action(methods=['post'], detail=False)
+    def autofillPost(self, request):
+        """Post request for a user to sign up for an event"""
+
+        return Response({'message': 'It worked'}, status=status.HTTP_201_CREATED)
 
 
 class TagSerializer(serializers.ModelSerializer):
