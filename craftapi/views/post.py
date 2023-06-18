@@ -71,6 +71,8 @@ class PostView(ViewSet):
     @action(methods=['post'], detail=False)
     def autofillPost(self, request):
         """Post request for a user to sign up for an event"""
+        project = Project.objects.get(pk=request.data['project'])
+        print(project.name)
 
         return Response({'message': 'It worked'}, status=status.HTTP_201_CREATED)
 
