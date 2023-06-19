@@ -79,6 +79,12 @@ class PostView(ViewSet):
         for note in notes:
             note_list.append(note.note)
 
+        inspirations = project.inspirations.all()
+        inspirations_list = []
+        for inspiration in inspirations:
+            inspirations_list.append(inspiration.name)
+        print(inspirations_list)
+
         tags = Tag.objects.filter(id__in=request.data['tags'])
         tags_list = []
 
@@ -86,7 +92,7 @@ class PostView(ViewSet):
             tags_list.append(tag.tag)
 
         conversation = [{"role": "system", "content": "You are a social media expert and will help people create posts about their craft projects",
-                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list}"}]
+                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list} this project was inspired by {inspirations_list}"}]
 
         return Response({'message': 'It worked'}, status=status.HTTP_201_CREATED)
 
