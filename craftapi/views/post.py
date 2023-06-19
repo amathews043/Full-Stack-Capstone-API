@@ -72,8 +72,16 @@ class PostView(ViewSet):
     def autofillPost(self, request):
         """Post request for a user to sign up for an event"""
         project = Project.objects.get(pk=request.data['project'])
+        notes = project.project_notes.all()
+
+        note_list = []
+
+        for note in notes:
+            note_list.append(note.note)
+
         tags = Tag.objects.filter(id__in=request.data['tags'])
-        print(tags)
+        conversation = [{"role": "system", "content": "You are a social media expert and will help people create posts about their craft projects",
+                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description}  "}]
 
         return Response({'message': 'It worked'}, status=status.HTTP_201_CREATED)
 
