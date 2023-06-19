@@ -2,8 +2,11 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
+import os
+import openai
 
 from craftapi.models import Post, Project, User, Tag
+
 
 class PostView(ViewSet):
     """Post View """
@@ -93,8 +96,14 @@ class PostView(ViewSet):
 
         conversation = [{"role": "system", "content": "You are a social media expert and will help people create posts about their craft projects",
                         "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list} this project was inspired by {inspirations_list}"}]
+        
+        openai.api_key = os.getenv("OPENAI_API_KEY")
+        response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo", messages=conversation
+            )
+        response = response.choices[0].message.content
 
-        return Response({'message': 'It worked'}, status=status.HTTP_201_CREATED)
+        return Response({'message': response}, status=status.HTTP_201_CREATED)
 
 
 class TagSerializer(serializers.ModelSerializer):
