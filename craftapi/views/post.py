@@ -85,8 +85,12 @@ class PostView(ViewSet):
         inspirations = project.inspirations.all()
         inspirations_list = []
         for inspiration in inspirations:
-            inspirations_list.append(inspiration.name)
-        print(inspirations_list)
+            inspirations_list.append(f"{inspiration.name} by {inspiration.creator_name}")
+
+        posts = project.project_posts.all()
+        posts_list = []
+        for post in posts:
+            posts_list.append(post.post)
 
         tags = Tag.objects.filter(id__in=request.data['tags'])
         tags_list = []
@@ -94,8 +98,8 @@ class PostView(ViewSet):
         for tag in tags: 
             tags_list.append(tag.tag)
 
-        conversation = [{"role": "system", "content": "You are a social media expert and will help people create posts about their craft projects",
-                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list} this project was inspired by {inspirations_list}"}]
+        conversation = [{"role": "system", "content": " You never use quotation marks in your response. You create social media posts that sound like you are talking to a good friend. You will help people create posts about their craft projects. You will not response with quotation marks around your response. Your response will not include "" or '' ",
+                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list} this project was inspired by {inspirations_list}. other posts about this project {posts_list}"}]
         
         openai.api_key = os.getenv("OPENAI_API_KEY")
         response = openai.ChatCompletion.create(
