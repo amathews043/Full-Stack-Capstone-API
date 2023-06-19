@@ -1,8 +1,12 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from rest_framework.decorators import action
+import os
+import openai
 
 from craftapi.models import Post, Project, User, Tag
+
 
 class PostView(ViewSet):
     """Post View """
@@ -66,6 +70,44 @@ class PostView(ViewSet):
         
         else: 
             return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+    @action(methods=['post'], detail=False)
+    def autofillPost(self, request):
+        """Post request for a user to sign up for an event"""
+        project = Project.objects.get(pk=request.data['project'])
+        notes = project.project_notes.all()
+
+        note_list = []
+
+        for note in notes:
+            note_list.append(note.note)
+
+        inspirations = project.inspirations.all()
+        inspirations_list = []
+        for inspiration in inspirations:
+            inspirations_list.append(f"{inspiration.name} by {inspiration.creator_name}")
+
+        posts = project.project_posts.all()
+        posts_list = []
+        for post in posts:
+            posts_list.append(post.post)
+
+        tags = Tag.objects.filter(id__in=request.data['tags'])
+        tags_list = []
+
+        for tag in tags: 
+            tags_list.append(tag.tag)
+
+        conversation = [{"role": "system", "content": " You never use quotation marks in your response. You create social media posts that sound like you are talking to a good friend. You will help people create posts about their craft projects. You will not response with quotation marks around your response. Your response will not include "" or '' ",
+                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list} this project was inspired by {inspirations_list}. other posts about this project {posts_list}"}]
+        
+        openai.api_key = os.getenv("OPENAI_API_KEY")
+        response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo", messages=conversation
+            )
+        response = response.choices[0].message.content
+
+        return Response({'message': response}, status=status.HTTP_201_CREATED)
 
 
 class TagSerializer(serializers.ModelSerializer):
