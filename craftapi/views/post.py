@@ -80,8 +80,13 @@ class PostView(ViewSet):
             note_list.append(note.note)
 
         tags = Tag.objects.filter(id__in=request.data['tags'])
+        tags_list = []
+
+        for tag in tags: 
+            tags_list.append(tag.tag)
+
         conversation = [{"role": "system", "content": "You are a social media expert and will help people create posts about their craft projects",
-                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description}  "}]
+                        "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list}"}]
 
         return Response({'message': 'It worked'}, status=status.HTTP_201_CREATED)
 
