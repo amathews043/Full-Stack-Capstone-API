@@ -60,6 +60,7 @@ class PostView(ViewSet):
         if post.user_id == user.id:
             post.post = request.data['post']
             post.image = request.data['image']
+            post.tags.set(request.data['tags'])
 
             project = Project.objects.get(pk=request.data['project'])
             post.project = project
