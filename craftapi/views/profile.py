@@ -1,13 +1,15 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from rest_framework.decorators import action
 
 from craftapi.models import User
 
 class ProfileView(ViewSet):
+
     def retrieve(self, request, pk):
         try:
-            profile = User.objects.get(pk=pk)
+            profile = request.auth.user
             serializer = ProfileSerializer(profile)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except User.DoesNotExist as ex: 
@@ -31,6 +33,16 @@ class ProfileView(ViewSet):
 
         else: 
             return Response({'message': 'This is not your profile'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+    @action(methods=['get'], detail=False)
+    def current_user_profile(self, request): 
+        try:
+            profile = request.auth.user
+            serializer = ProfileSerializer(profile)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except User.DoesNotExist as ex: 
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
         
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta: 
