@@ -4,6 +4,7 @@ from rest_framework import serializers, status
 from rest_framework.decorators import action
 import os
 import openai
+from django.db.models import Q
 
 from craftapi.models import Post, Project, User, Tag
 
@@ -71,6 +72,22 @@ class PostView(ViewSet):
         
         else: 
             return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+    @action(methods=['get'], detail=False)
+    def current_user_post_list(self, request): 
+        profile = request.auth.user
+        posts = Post.objects.filter(Q(user_id = profile))
+
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    @action(methods=['get'], detail=False)
+    def post_list(self, request): 
+        profile = request.auth.user
+        posts = Post.objects.filter(~Q(user_id = profile))
+
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
         
     @action(methods=['post'], detail=False)
     def autofillPost(self, request):
