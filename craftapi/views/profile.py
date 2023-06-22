@@ -42,6 +42,15 @@ class ProfileView(ViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except User.DoesNotExist as ex: 
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        
+    @action(methods=['get'], detail=False)
+    def user_profile(self, request): 
+        try:
+            profile = User.objects.get(pk=request.data['user'])
+            serializer = ProfileSerializer(profile)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except User.DoesNotExist as ex: 
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
         
 class ProfileSerializer(serializers.ModelSerializer):
