@@ -88,6 +88,14 @@ class PostView(ViewSet):
 
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    @action(methods=['get'], detail=True)
+    def other_user_post_list(self, request, pk): 
+        profile = User.objects.get(pk=pk)
+        posts = Post.objects.filter(Q(user_id = profile))
+
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
         
     @action(methods=['post'], detail=False)
     def autofillPost(self, request):
