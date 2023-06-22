@@ -4,6 +4,7 @@ from rest_framework import serializers, status
 from rest_framework.decorators import action
 import os
 import openai
+from django.db.models import Q
 
 from craftapi.models import Post, Project, User, Tag
 
@@ -60,6 +61,7 @@ class PostView(ViewSet):
         if post.user_id == user.id:
             post.post = request.data['post']
             post.image = request.data['image']
+            post.tags.set(request.data['tags'])
 
             project = Project.objects.get(pk=request.data['project'])
             post.project = project
@@ -70,6 +72,22 @@ class PostView(ViewSet):
         
         else: 
             return Response({'message': 'This is not your post'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+    @action(methods=['get'], detail=False)
+    def current_user_post_list(self, request): 
+        profile = request.auth.user
+        posts = Post.objects.filter(Q(user_id = profile))
+
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    @action(methods=['get'], detail=False)
+    def post_list(self, request): 
+        profile = request.auth.user
+        posts = Post.objects.filter(~Q(user_id = profile))
+
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
         
     @action(methods=['post'], detail=False)
     def autofillPost(self, request):
@@ -98,7 +116,7 @@ class PostView(ViewSet):
         for tag in tags: 
             tags_list.append(tag.tag)
 
-        conversation = [{"role": "system", "content": " You never use quotation marks in your response. You create social media posts that sound like you are talking to a good friend. You will help people create posts about their craft projects. You will not response with quotation marks around your response. Your response will not include "" or '' ",
+        conversation = [{"role": "system", "content": " You never use quotation marks in your response. You create social media posts that sound like you are talking to a good friend. You will help people create posts about their craft projects. You will only use new thoughts and not include things from previous posts about the project. You will not response with quotation marks around your response. Your response will not include "" or '' ",
                         "role": "user", "content": f"Can you please help me make a social media post for this project? {project.name} {project.description} project notes = {note_list} post tags = {tags_list} this project was inspired by {inspirations_list}. other posts about this project {posts_list}"}]
         
         openai.api_key = os.getenv("OPENAI_API_KEY")
