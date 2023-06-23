@@ -21,12 +21,12 @@ class PostView(ViewSet):
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
     
     def list(self, request):
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-id')
 
         if "project_id" in request.query_params: 
             project_id = int(request.query_params['project_id'])
             posts = posts.filter(project=project_id)
-        
+
         if "user_id" in request.query_params:
             user_id = int(request.query_params['user_id'])
             posts = posts.filter(user=user_id)
