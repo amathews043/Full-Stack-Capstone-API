@@ -2,6 +2,8 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from craftapi.models import Comment, Post
+from django.db.models import Q
+from rest_framework.decorators import action
 
 
 class CommentView(ViewSet):
@@ -21,6 +23,14 @@ class CommentView(ViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save(sender=sender)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    @action(methods=['get'], detail=False)
+    def post_comments_list(self, request): 
+        post = Post.objects.get(pk = request.data['post'])
+        comments = Comment.objects.filter(Q(post_id = post.id))
+
+        serializer = commentSerializer(comments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class commentSerializer(serializers.ModelSerializer):
     class Meta:
