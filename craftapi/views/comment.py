@@ -24,9 +24,9 @@ class CommentView(ViewSet):
         serializer.save(sender=sender)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
-    @action(methods=['get'], detail=False)
-    def post_comments_list(self, request): 
-        post = Post.objects.get(pk = request.data['post'])
+    @action(methods=['get'], detail=True)
+    def post_comments_list(self, request, pk): 
+        post = Post.objects.get(pk = pk)
         comments = Comment.objects.filter(Q(post_id = post.id))
 
         serializer = commentSerializer(comments, many=True)
