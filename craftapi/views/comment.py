@@ -35,7 +35,7 @@ class CommentView(ViewSet):
 class commentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ['id', 'message', 'post', 'sender', 'date']
+        fields = ['id', 'message', 'post', 'sender', 'date', 'sender_name']
 
 class createCommentSerializer(serializers.ModelSerializer):
     class Meta: 

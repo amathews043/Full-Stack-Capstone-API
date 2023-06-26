@@ -144,7 +144,7 @@ class TagSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Comment
-        fields = ['id', 'message', 'post', 'sender', 'date']
+        fields = ['id', 'message', 'post', 'sender', 'date', 'sender_name']
 
 class PostSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)

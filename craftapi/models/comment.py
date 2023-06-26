@@ -7,3 +7,7 @@ class Comment(models.Model):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     message = models.CharField(max_length=5000)
     date = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def sender_name(self): 
+        return f'{self.sender.username}'
