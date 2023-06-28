@@ -4,3 +4,4 @@ from .project import ProjectView
 from .profile import ProfileView
 from .tag import TagView
 from .note import NoteView
+from .comment import CommentView

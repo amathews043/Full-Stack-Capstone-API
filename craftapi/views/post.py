@@ -6,7 +6,7 @@ import os
 import openai
 from django.db.models import Q
 
-from craftapi.models import Post, Project, User, Tag
+from craftapi.models import Post, Project, User, Tag, Comment
 
 
 class PostView(ViewSet):
@@ -141,11 +141,17 @@ class TagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = ['id', 'tag']
 
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Comment
+        fields = ['id', 'message', 'post', 'sender', 'date', 'sender_name']
+
 class PostSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
+    post_comments = CommentSerializer(many=True, read_only=True)
     class Meta: 
         model = Post
-        fields = ('id', 'post', 'date', 'project', 'user', 'image', 'project_name', 'creator_name', 'tags')
+        fields = ('id', 'post', 'date', 'project', 'user', 'image', 'project_name', 'creator_name', 'tags', 'post_comments')
 
 class CreatePostSerializer(serializers.ModelSerializer):
 
